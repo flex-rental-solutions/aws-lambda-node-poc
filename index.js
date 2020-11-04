@@ -43,7 +43,7 @@ exports.handler = async (event) => {
 
     const response = {
         statusCode: 200,
-        body: JSON.stringify(apiInfoResp.data)
+        body: "ETL Action complete for '" + eventType + "' and flexTargetGuid " + flexTargetGuid
     };
     return response;
 };
