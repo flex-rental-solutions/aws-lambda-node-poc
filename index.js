@@ -4,7 +4,7 @@ exports.handler = async (event) => {
 
     let apiInfoResp = null;
 
-    let requestData = event;
+    let requestData = event.body ? JSON.parse(event.body) : event;
     let flexJWT = requestData.flexJWT;
     let flexTargetGuid = requestData.flexTargetGuid
     let eventType = requestData.eventType
