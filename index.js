@@ -34,7 +34,7 @@ exports.handler = async (event) => {
             "text": "AWS Lamba Data Post\nType: " + eventType + "\n\n" + JSON.stringify(apiInfoResp.data)
         }
 
-        let slackResp = await axios.post("https://hooks.slack.com/services/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", slackData);
+        let slackResp = await axios.post("https://hooks.slack.com/services/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", slackData);
     } catch (error) {
         console.error(error);
     }
