@@ -6,13 +6,14 @@ exports.handler = async (event) => {
 
     try {
         apiInfoResp = await axios.get('https://flex5dev.flexrentalsolutions.com/f5/api/info');
+        //console.log(apiInfoResp.data);
     } catch (error) {
         console.error(error);
     }
 
     const response = {
         statusCode: 200,
-        body: apiInfoResp
+        body: JSON.stringify(apiInfoResp.data)
     };
     return response;
 };
