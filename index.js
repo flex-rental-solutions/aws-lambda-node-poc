@@ -8,7 +8,7 @@ exports.handler = async (event) => {
     let flexJWT = requestData.flexJWT;
     let flexTargetGuid = requestData.flexTargetGuid
     let eventType = requestData.eventType
-    let slackPostUrl =process.env.slack_post_url
+    let slackPostUrl = process.env.slack_post_url
 
     let config = {
         headers: {
