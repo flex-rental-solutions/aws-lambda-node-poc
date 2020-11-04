@@ -6,7 +6,8 @@ exports.handler = async (event) => {
 
     let requestData = event;
     let flexJWT = requestData.flexJWT;
-    let modelId = requestData.modelId
+    let flexTargetGuid = requestData.flexTargetGuid
+    let eventType = requestData.eventType
 
     let config = {
         headers: {
@@ -15,8 +16,14 @@ exports.handler = async (event) => {
     }
 
     try {
-        apiInfoResp = await axios.get('https://flex5dev.flexrentalsolutions.com/f5/api/inventory-model/' + modelId, config);
-        //console.log(apiInfoResp.data);
+        switch (eventType){
+            case "inventory-model":
+                apiInfoResp = await axios.get('https://flex5dev.flexrentalsolutions.com/f5/api/inventory-model/' + flexTargetGuid, config);
+                break;
+            case "contact":
+                apiInfoResp = await axios.get('https://flex5dev.flexrentalsolutions.com/f5/api/contact/' + flexTargetGuid, config);
+                break;
+        }
     } catch (error) {
         console.error(error);
     }
