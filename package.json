@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/rogiller/aws-lambda-node-poc/issues"
   },
-  "homepage": "https://github.com/rogiller/aws-lambda-node-poc#readme"
+  "homepage": "https://github.com/rogiller/aws-lambda-node-poc#readme",
+  "dependencies": {
+    "axios": "^0.21.0"
+  }
 }
