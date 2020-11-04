@@ -17,6 +17,16 @@ exports.handler = async (event) => {
         console.error(error);
     }
 
+    try {
+        let slackData = {"text" : JSON.stringify(apiInfoResp.data)};
+        //post to #lambda_posts channel
+        let slackResp = await axios.post("https://hooks.slack.com/services/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", slackData);
+        //console.log(slackResp.data);
+    } catch (error) {
+        console.error(error);
+    }
+
+
     const response = {
         statusCode: 200,
         body: JSON.stringify(apiInfoResp.data)
