@@ -33,7 +33,7 @@ exports.handler = async (event) => {
     try {
         //post to #lambda_posts channel
         let slackData = {
-            "text": "AWS Lamba Data Post\nFlex Data Source: " + flexBaseURL + "\nEvent Type:" + eventType + "\n\n" + JSON.stringify(apiInfoResp.data)
+            "text": "AWS Lamba Data Post\nFlex Data Source: " + flexBaseURL + "\nEvent Type: " + eventType + "\n\n" + JSON.stringify(apiInfoResp.data)
         }
 
         let slackResp = await axios.post(slackPostUrl, slackData);
