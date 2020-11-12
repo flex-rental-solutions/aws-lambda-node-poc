@@ -2,8 +2,11 @@ const axios = require('axios');
 
 exports.handler = async (event) => {
 
-    let apiInfoResp = null;
+    //This function is a super primitive ETL function running on AWS Lambda. What it does:
+    // 1) Pull JSON Data from Flex
+    // 2) Post the JSON to the Flex #lambda_posts channel
 
+    let apiInfoResp = null;
     let requestData = event.body ? JSON.parse(event.body) : event;
     let flexJWT = requestData.flexJWT;
     let flexTargetGuid = requestData.flexTargetGuid
