@@ -7,6 +7,7 @@ exports.handler = async (event) => {
     let requestData = event.body ? JSON.parse(event.body) : event;
     let flexJWT = requestData.flexJWT;
     let flexTargetGuid = requestData.flexTargetGuid
+    let flexBaseURL = requestData.flexBaseURL
     let eventType = requestData.eventType
     let slackPostUrl = process.env.slack_post_url
 
@@ -19,10 +20,10 @@ exports.handler = async (event) => {
     try {
         switch (eventType){
             case "inventory-model":
-                apiInfoResp = await axios.get('https://flex5dev.flexrentalsolutions.com/f5/api/inventory-model/' + flexTargetGuid, config);
+                apiInfoResp = await axios.get(flexBaseURL + '/f5/api/inventory-model/' + flexTargetGuid, config);
                 break;
             case "contact":
-                apiInfoResp = await axios.get('https://flex5dev.flexrentalsolutions.com/f5/api/contact/' + flexTargetGuid, config);
+                apiInfoResp = await axios.get(flexBaseURL + '/f5/api/contact/' + flexTargetGuid, config);
                 break;
         }
     } catch (error) {
