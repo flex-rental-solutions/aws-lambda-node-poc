@@ -20,6 +20,7 @@ exports.handler = async (event) => {
         }
     }
 
+    //EXTRACT the data
     try {
         switch (eventType){
             case "inventory-model":
@@ -33,6 +34,9 @@ exports.handler = async (event) => {
         console.error(error);
     }
 
+    //TRANSFORM the data - no transformation of data in this POC
+
+    //LOAD the data
     try {
         //post to #lambda_posts channel
         let slackData = {
@@ -43,7 +47,6 @@ exports.handler = async (event) => {
     } catch (error) {
         console.error(error);
     }
-
 
     const response = {
         statusCode: 200,
