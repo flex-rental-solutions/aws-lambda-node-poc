@@ -13,6 +13,7 @@ exports.handler = async (event) => {
     let flexBaseURL = requestData.flexBaseURL
     let eventType = requestData.eventType
     let slackPostUrl = process.env.slack_post_url
+    let imageURL = null
 
     let config = {
         headers: {
@@ -25,9 +26,11 @@ exports.handler = async (event) => {
         switch (eventType){
             case "inventory-model":
                 apiInfoResp = await axios.get(flexBaseURL + '/f5/api/inventory-model/' + flexTargetGuid, config);
+                imageURL = await axios.get(flexBaseURL + '/f5/api/inventory-model/' + flexTargetGuid + '/imageUrl', config).data
                 break;
             case "contact":
                 apiInfoResp = await axios.get(flexBaseURL + '/f5/api/contact/' + flexTargetGuid, config);
+                imageURL = "Not Implemented";
                 break;
         }
     } catch (error) {
@@ -40,7 +43,11 @@ exports.handler = async (event) => {
     try {
         //post to #lambda_posts channel
         let slackData = {
-            "text": "AWS Lambda Data Post\nFlex Data Source: " + flexBaseURL + "\nEvent Type: " + eventType + "\n\n" + JSON.stringify(apiInfoResp.data)
+            "text": "AWS Lambda Data Post\n" +
+                "Flex Data Source: " + flexBaseURL +
+                "\nEvent Type: " + eventType +
+                "\nImage URL: " + imageURL +
+                "\n\n" + JSON.stringify(apiInfoResp.data)
         }
 
         let slackResp = await axios.post(slackPostUrl, slackData);
