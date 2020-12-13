@@ -26,7 +26,7 @@ exports.handler = async (event) => {
         switch (eventType){
             case "inventory-model":
                 apiInfoResp = await axios.get(flexBaseURL + '/f5/api/inventory-model/' + flexTargetGuid, config);
-                imageURL = await axios.get(flexBaseURL + '/f5/api/inventory-model/' + flexTargetGuid + '/imageUrl', config).data
+                imageURL = await axios.get(flexBaseURL + '/f5/api/inventory-model/' + flexTargetGuid + '/imageUrl', config)
                 break;
             case "contact":
                 apiInfoResp = await axios.get(flexBaseURL + '/f5/api/contact/' + flexTargetGuid, config);
