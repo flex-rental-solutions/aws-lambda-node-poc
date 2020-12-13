@@ -46,7 +46,7 @@ exports.handler = async (event) => {
             "text": "AWS Lambda Data Post\n" +
                 "Flex Data Source: " + flexBaseURL +
                 "\nEvent Type: " + eventType +
-                "\nImage URL: " + imageURL +
+                "\nImage URL: " + JSON.stringify(imageURL) +
                 "\n\n" + JSON.stringify(apiInfoResp.data)
         }
 
